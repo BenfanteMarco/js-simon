@@ -13,12 +13,36 @@ function userNumber(){
     const userNum = [];
     while(userNum.length < 5){
         let number = parseInt(prompt('inserisci il numero'));
-        if(isNaN(number) == false){
+        if(!isNaN(number) && !userNum.includes(number)){
             userNum.push(number);
         }
     }
 
     return userNum;
+}
+
+// verifico quanti numeri ho indovinato
+function checkNum(userNum, randomNum){
+    let check = [];
+    for(let i=0; i<userNum.length; i++){
+        if(randomNum.includes(userNum[i])){
+            check.push(userNum[i]);
+        }
+    }
+    return check;
+}
+
+// stampo i risultati
+function printResult(array){
+    let text;
+
+    if(array.length == 1){
+        text = `Hai indovinato un numero; ${array}`;
+    } else{
+        text = `Hai indovinato ${array.length} numeri. ecco quali: ${array}`;
+    }
+
+    document.getElementById('result').innerHTML = text;
 }
 
 // inserire numeri in un array
@@ -38,9 +62,11 @@ document.getElementById('numbers').innerHTML = arrayNum;
 // time for reset
 setTimeout(function(){
     document.getElementById('numbers').innerText = '';
-}, 5000)
+}, 30000)
 
 // far inserire i numeri all'user con il timer
 setTimeout(function(){
     let userNum = userNumber();
-}, 6000)
+    let checkNumbers = checkNum(userNum, arrayNum);
+    printResult(checkNumbers);
+}, 31000)
