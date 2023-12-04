@@ -8,6 +8,19 @@ function reset(){
     document.getElementById('numbers').innerHTML = 'inserisci i numeri mostrati';
 }
 
+// creo una funzione che crea l'array dell'user
+function userNumber(){
+    const userNum = [];
+    while(userNum.length < 5){
+        let number = parseInt(prompt('inserisci il numero'));
+        if(isNaN(number) == false){
+            userNum.push(number);
+        }
+    }
+
+    return userNum;
+}
+
 // inserire numeri in un array
 const arrayNum = [];
 
@@ -29,11 +42,5 @@ setTimeout(function(){
 
 // far inserire i numeri all'user con il timer
 setTimeout(function(){
-    const userNum = [];
-    while(userNum.length < 5){
-        let number = parseInt(prompt('inserisci il numero'));
-        if(isNaN(number) == false){
-            userNum.push(number);
-        }
-    }
+    let userNum = userNumber();
 }, 6000)
