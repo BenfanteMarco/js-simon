@@ -5,7 +5,7 @@ function randomNumber(){
 
 // funzione di reset
 function reset(){
-    document.getElementById('numbers').innerHTML = '';
+    document.getElementById('numbers').innerHTML = 'inserisci i numeri mostrati';
 }
 
 // inserire numeri in un array
@@ -21,3 +21,19 @@ while(arrayNum.length < 5){
 
 // collego all'html
 document.getElementById('numbers').innerHTML = arrayNum;
+
+// time for reset
+setTimeout(function(){
+    document.getElementById('numbers').innerText = '';
+}, 5000)
+
+// far inserire i numeri all'user con il timer
+setTimeout(function(){
+    const userNum = [];
+    while(userNum.length < 5){
+        let number = parseInt(prompt('inserisci il numero'));
+        if(isNaN(number) == false){
+            userNum.push(number);
+        }
+    }
+}, 6000)
